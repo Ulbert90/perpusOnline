@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "config.php";
+include_once "koneksi.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($koneksi, $_POST["username"]);
@@ -28,17 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert the new user into the database
-    $insertQuery = "INSERT INTO users (username, password, email ,namaLengkap, alamat) VALUES ('$username', '$hashedPassword', '$email', '$NL', '$alamat')";
+    $insertQuery = "INSERT INTO users (username, password, email, namaLengkap, alamat) VALUES ('$username', '$hashedPassword', '$email', '$NL', '$alamat')";
     $insertResult = mysqli_query($koneksi, $insertQuery);
 
     if (!$insertResult) {
         die("Error: " . mysqli_error($koneksi));
     }
+
     header("location: index.php");
     echo "<script>DB Berhasil ditambhakan</script>";
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

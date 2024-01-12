@@ -36,7 +36,7 @@
                 <!-- First Content Block -->
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body bg-success">
                             <h5 class="card-title fs-2"><i class="fa-solid fa-book"></i> Peminjam</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                                 posuere
@@ -48,7 +48,7 @@
                 <!-- Second Content Block -->
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body bg-primary">
                             <h5 class="card-title fs-2"><i class="fa-solid fa-bookmark"></i> Pengembalian</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                                 posuere
