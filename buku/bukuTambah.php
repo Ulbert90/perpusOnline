@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin | perpus</title>
     <script src="https://kit.fontawesome.com/13c062a83b.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <script src="../src/js/script.js"></script>
     <link rel="stylesheet" href="../admin/dasboard.css">
 </head>
@@ -19,7 +18,9 @@
         ?>
     <div class="content">
         <!-- main konten-->
-        <div class="container ">
+        <h1 class="text-center fs-5">Tambah Data Buku</h1>
+        <hr class="mt-2">
+        <div class="container mt-5">
             <div class="card">
                 <div class="card-body">
                     <form method="post" action="bukuTambah_act.php" enctype="multipart/form-data">
@@ -44,7 +45,7 @@
                             <input type="file" class="form-control" id="coverBuku" name="coverBuku"
                                 onchange="previewImage(this)">
                             <img id="preview" src="#" alt="Preview"
-                                style="max-width: 100%; max-height: 200px; margin-top: 10px; display: none;">
+                                style="max-width: 100%; max-height: 100px; margin-top: 10px; display: none; border: solid #000;">
                         </div>
                         <button type="submit" class="btn btn-outline-primary">Input</button>
                     </form>
@@ -56,8 +57,7 @@
     </div>
 
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        <script src="../assets/js/bootstrap.min.js">
         </script>
     </body>
 

@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_stmt_bind_param($stmt, "sssis", $judul, $penulis, $penerbit, $tahunTerbit, $coverBuku);
 
             if (mysqli_stmt_execute($stmt)) {
-                header("location: buku.php");
+                header("location: data_buku.php");
             } else {
                 echo "Sorry, there was an error inserting data into the database.";
             }

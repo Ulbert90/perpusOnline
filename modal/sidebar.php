@@ -17,42 +17,42 @@
         <a href="index.php"><i class="fas fa-home"></i> Home</a>
         <a href="dasboard.php"><i class="fas fa-user-tie"></i> Admin</a>
         <a href="data_buku.php"><i class="fas fa-computer"></i> Data Barang</a>
-        <a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        <a href="../logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </body>
 
 </html>
 <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-    }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
 
-    #sidebar {
-        position: fixed;
-        height: 100%;
-        width: 250px;
-        background: #202020;
-        padding-top: 20px;
-    }
+#sidebar {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    background: #202020;
+    padding-top: 20px;
+}
 
-    #sidebar a {
-        padding: 15px 20px;
-        font-size: 18px;
-        color: #ffffff;
-        text-decoration: none;
-        display: block;
-        transition: all 0.3s;
-    }
+#sidebar a {
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s;
+}
 
-    #sidebar a:hover {
-        background-color: #00bd16;
-    }
+#sidebar a:hover {
+    background-color: #00bd16;
+}
 
-    #content {
-        margin-left: 250px;
-        padding: 20px;
-    }
+#content {
+    margin-left: 250px;
+    padding: 20px;
+}
 </style>
