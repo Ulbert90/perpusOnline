@@ -17,8 +17,7 @@
         <a href="../buku/buku.php"><i class="fas fa-earth"></i> Dasboard</a>
         <a href="../buku/data_buku.php"><i class="fas fa-bars"></i> Buku</a>
         <a href="../buku/bukuTambah.php"><i class="fas fa-plus"></i> Tambah Data Buku </a>
-        <a href="bukuEdit.php"><i class="fas fa-magnifying-glass"></i> peminjaman</a>
-        <a href="bukuHapus.php"><i class="fa-solid fa-trash-can"></i> pengembalian</a>
+        <a href="bukuEdit.php"><i class="fas fa-magnifying-glass"></i> Laporan</a>
         <a href="../admin/dasboard.php"><i class="fa-solid fa-left-long"></i> kembali</a>
     </div>
 </body>

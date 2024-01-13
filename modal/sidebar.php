@@ -14,9 +14,9 @@
 <body>
 
     <div id="sidebar">
-        <a href="index.php"><i class="fas fa-home"></i> Home</a>
-        <a href="dasboard.php"><i class="fas fa-user-tie"></i> Admin</a>
-        <a href="data_buku.php"><i class="fas fa-computer"></i> Data Barang</a>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="dasboard.php"><i class="fas fa-user-tie"></i> User Aplikasi</a>
+        <a href="../buku/buku.php"><i class="fas fa-book"></i> Data Buku</a>
         <a href="../logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </body>

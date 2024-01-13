@@ -1,6 +1,6 @@
 <?php
 include '../koneksi.php';
-$id = $_GET["id"];
+$id = $_GET["bukuID"];
 
     //jalankan query DELETE untuk menghapus data
     $query = "DELETE FROM buku WHERE bukuID='$id' ";
