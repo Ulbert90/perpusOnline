@@ -107,7 +107,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body bg-warning border border-white rounded">
-                            <a href="peminjam.php" class="card-link">
+                            <a href="../user/member.php" class="card-link">
                                 <h5 class="card-title fs-2 text-white"><i class="fa-solid fa-star"></i> Member Pass</h5>
                                 <p class="card-text">Daftar Nama Member Pass .</p>
                             </a>

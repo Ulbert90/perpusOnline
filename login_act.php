@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("location: petugas_dashboard.php");
                 break;
             case 'peminjam':
-                header("location: peminjam_dashboard.php");
+                header("location: /public/peminjam.php");
                 break;
             default:
                 echo "Invalid user role";

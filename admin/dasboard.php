@@ -1,14 +1,24 @@
+<?php
+  include_once '../modal/sidebar.php';
+  include_once '../koneksi.php';
+
+// Assuming you want to display the details of the first user (you can modify it based on your requirement)
+$queryKategori = mysqli_query($koneksi, "SELECT * FROM users");
+
+if ($queryKategori) {
+    $user = mysqli_fetch_assoc($queryKategori);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasboard | Admin</title>
     <link rel="stylesheet" href="dasboard.css">
 </head>
 
 <body>
-
     <nav>
         <ul class="navbar-left">
         </ul>
@@ -19,62 +29,50 @@
                 <a href="dasboard.php">
                     <img src="../img/arc.png" class="" width="35" height="60">
                 </a>
-                <h4 class="text-white">Dasboard Admin</h4>
+                <h4 class="text-white">Dasboard <?php echo $user['username'] ?>
+                </h4>
             </div>
         </div>
     </nav>
 
 
-    <?php
-    include_once '../modal/sidebar.php';
-    include_once '../koneksi.php';
-        ?>
+
+
 
     <div class="content">
         <!-- Main Content Section -->
         <section id="datas">
-            <div class="container mt-5">
-                <table class="table table-striped-columns border border-dark">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Nama Lengkap</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                $no = 1;
-                $queryKategori = mysqli_query($koneksi, "SELECT * FROM users");
-                $jumlahKategori = mysqli_num_rows($queryKategori);
-
-                if ($jumlahKategori == 0) {
-                ?>
-                        <tr>
-                            <td colspan="7">I am wanna have a relationship too 😓...</td>
-                        </tr>
-                        <?php
-                } else {
-                    while ($d = mysqli_fetch_assoc($queryKategori)) {
-                ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $d['username']; ?></td>
-                            <td><?php echo $d['namaLengkap']; ?></td>
-                            <td><?php echo $d['alamat']; ?></td>
-                            <td><?php echo $d['role']; ?></td>
-                        </tr>
-                        <?php
-                    }
-                }
-                ?>
-                    </tbody>
-                </table>
-            </div>
+            <?php
+            require_once '../randomQuote/random.php'
+            ?>
         </section>
 
+
+
+
+        <main>
+            <div class="row mt-3">
+                <div class="col-md-6 d-flex">
+                    <div class="card">
+                        <div class="card-body border border-white rounded">
+                            <h5 class="card-title fs-2"><i class="fa-solid fa-user-tie"></i>
+                                <?php echo $user['namaLengkap'] ?></h5>
+                            <p class="card-text">email:
+                                <span class=" underline"> <?php echo $user['email']; ?></span>
+                            </p>
+                            <p class="card-text">Password:
+                                <span class=" underline"> <?php echo $user['password']; ?></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+} else {
+    echo "Error: " . mysqli_error($koneksi);
+}
+?>
+        </main>
 
     </div>
 

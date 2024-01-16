@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the body takes the full height of the viewport */
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container h1 {
+  margin: 0;
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-color: white;
+}
+
+.col-kiri,
+.col-tengah,
+.col-kanan {
+  flex: 1;
+}
+
+/* Adjust as needed */
+.col-kiri {
+  text-align: left;
+}
+
+.col-tengah {
+  text-align: center;
+}
+
+.col-kanan .row a {
+  text-align: right;
+}
+
+.col-kanan .row a :hover {
+  color: #fff;
+}

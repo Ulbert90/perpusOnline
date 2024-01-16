@@ -47,7 +47,7 @@
                             <th scope="col">Penerbit</th>
                             <th scope="col">Tahun Terbit</th>
                             <th scope="col">Cover Buku</th>
-                            <th scope="col">Opsi</th>
+                            <th scope="col" width="18%">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>

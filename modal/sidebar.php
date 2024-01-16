@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/style.css" />
-    <title>Simple Sidebar Example</title>
     <!-- Bootstrap CSS link -->
     <script src="https://kit.fontawesome.com/13c062a83b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,8 +13,8 @@
 <body>
 
     <div id="sidebar">
-        <a href="#"><i class="fas fa-home"></i> Home</a>
-        <a href="dasboard.php"><i class="fas fa-user-tie"></i> User Aplikasi</a>
+        <a href="../admin/dasboard.php"><i class="fas fa-bars"></i> Dasboard </a>
+        <a href="../user/member.php"><i class="fas fa-user-tie"></i> User Aplikasi</a>
         <a href="../buku/buku.php"><i class="fas fa-book"></i> Data Buku</a>
         <a href="../logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>

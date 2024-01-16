@@ -27,8 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Insert the new user into the database
-    $insertQuery = "INSERT INTO users (username, password, email, namaLengkap, alamat) VALUES ('$username', '$hashedPassword', '$email', '$NL', '$alamat')";
+    // Set the default role to "peminjam"
+    $role = "peminjam";
+
+    // Insert the new user into the database with the specified role
+    $insertQuery = "INSERT INTO users (username, password, email, namaLengkap, alamat, role) VALUES ('$username', '$hashedPassword', '$email', '$NL', '$alamat', '$role')";
     $insertResult = mysqli_query($koneksi, $insertQuery);
 
     if (!$insertResult) {
@@ -40,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h3 class="text-center">Form Registrasi</h3>
                     </div>
                     <div class="card-body">
-                        <form action="register.php" method="post">
+                        <form action="" method="post">
                             <div class="mb-3">
                                 <label for="namaLengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" required>
