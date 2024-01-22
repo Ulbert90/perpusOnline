@@ -1,3 +1,8 @@
+<?php
+    include_once '../navigation/sidebar.php';
+    include_once '../config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,92 +11,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin | Perpus</title>
     <script src="https://kit.fontawesome.com/13c062a83b.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../admin/dasboard.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 </head>
 
-<body class="fixed" style=" 
-        background-image: url(https://img.freepik.com/free-vector/set-torii-gates-water_52683-44986.jpg?w=740&t=st=1705077431~exp=1705078031~hmac=15b966f500d4ee2b2e1e040ed442af9a1e3851296883e7a5b785c3e4812f83a1);  background-size: cover;
-        color: white;">
-    <nav>
-        <ul class=" navbar-left">
-        </ul>
-        <div class="navbar-center">
-        </div>
-        <div class="navbar-rihgt">
-            <div class="navbar-container p-3 ml-5">
-                <a href="dasboard.php">
-                    <img src="../img/arc.png" class="" width="35" height="60">
-                </a>
-                <h4 class="text-white">Dasboard Admin</h4>
-            </div>
-        </div>
-    </nav>
+<body>
 
-    <?php
-    include_once '../modal/sidebarBuku.php';
-    include_once '../koneksi.php';
-    ?>
-
-    <div class="content">
+    <div id="content">
         <!-- Main Content Section -->
-        <section id="datas">
-            <div class="container mt-5">
-                <table class="table table-striped-columns border border-dark">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col">#</th>
-                            <th scope="col">Judul</th>
-                            <th scope="col">Penulis</th>
-                            <th scope="col">Penerbit</th>
-                            <th scope="col">Tahun Terbit</th>
-                            <th scope="col">Cover Buku</th>
-                            <th scope="col" width="18%">Opsi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page"><i class="fas fa-home"></i> Home</li>
+                <li class="breadcrumb-item" aria-current="page">Data Buku</li>
+                <li class="breadcrumb-item"><a href="bukuTambah.php">Tambah Data Buku</a></li>
+            </ol>
+        </nav>
+
+        <div class="container">
+            <table class="table table-bordered border border-dark">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">#</th>
+                        <th scope="col">Judul</th>
+                        <th scope="col">Penulis</th>
+                        <th scope="col">Penerbit</th>
+                        <th scope="col">Tahun Terbit</th>
+                        <th scope="col" width="10%">Cover Buku</th>
+                        <th scope="col" width="18%">Opsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                         $no = 1;
                         $queryKategori = mysqli_query($koneksi, "SELECT * FROM buku");
                         $jumlahKategori = mysqli_num_rows($queryKategori);
 
                         if ($jumlahKategori == 0) {
                         ?>
-                        <tr>
-                            <td colspan="7">i am wanna have a relationship too😓...</td>
-                        </tr>
-                        <?php
+                    <tr>
+                        <td colspan="7">i am wanna have a relationship too😓...</td>
+                    </tr>
+                    <?php
                         } else {
                             while ($d = mysqli_fetch_assoc($queryKategori)) {
                         ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $d['judul']; ?></td>
-                            <td><?php echo $d['penulis']; ?></td>
-                            <td><?php echo $d['penerbit']; ?></td>
-                            <td><?php echo $d['tahunTerbit']; ?></td>
-                            <td>
-                                <img src="../img/<?php echo $d['coverBuku']; ?>"
-                                    style="width:100px;height:100px; border: solid #000;">
-                            </td>
-                            <td>
-                                <a href="bukuEdit.php?id=<?php echo $d['bukuID']; ?>"
-                                    class="btn btn-warning text-white">
-                                    <i class="fas fa-pen-to-square"></i> Edit
-                                </a>
-                                <a href="bukuHapus.php?bukuID<?php echo $d['bukuID']; ?>" class="btn btn-danger">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </a>
-                            </td>
-                        </tr>
-                        <?php
+                    <tr>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $d['judul']; ?></td>
+                        <td><?php echo $d['penulis']; ?></td>
+                        <td><?php echo $d['penerbit']; ?></td>
+                        <td><?php echo $d['tahunTerbit']; ?></td>
+                        <td>
+                            <img src="../img/<?php echo $d['coverBuku']; ?>"
+                                style="width:100px;height:100px; border: solid #000;">
+                        </td>
+                        <td>
+                            <a href="bukuEdit.php?bukuID=<?php echo $d['bukuID']; ?>"
+                                class="btn btn-warning text-white">
+                                <i class="fas fa-pen-to-square"></i> Edit
+                            </a>
+                            <a class="btn btn-danger" href='bukuHapus.php?bukuID=<?php echo $d['bukuID']; ?>'> <i
+                                    class="fas fa-trash-can"></i> Delete</a>
+
+                        </td>
+                    </tr>
+                    <?php
                             }
                         }
                         ?>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
         </section>
     </div>
 

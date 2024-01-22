@@ -1,95 +1,96 @@
 <?php
-  // memanggil file koneksi.php untuk membuat koneksi
-include_once '../koneksi.php';
+// Include your database connection file
+include('../config.php');
+include('../navigation/sidebar.php');
 
-  // mengecek apakah di url ada nilai GET id
-  if (isset($_GET['bukuID'])) {
-    // ambil nilai id dari url dan disimpan dalam variabel $id
-    $id = ($_GET["bukuID"]);
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get form data
+    $bukuID = $_POST['bukuID'];
+    $judul = $_POST['judul'];
+    $penulis = $_POST['penulis'];
+    $penerbit = $_POST['penerbit'];
+    $tahunTerbit = $_POST['tahunTerbit'];
+    // Note: In a real application, you should validate and sanitize user input.
 
-    // menampilkan data dari database yang mempunyai id=$id
-    $query = "SELECT * FROM buku WHERE bukuID='$id'";
+    // Update the book details in the database
+    $query = "UPDATE buku SET judul='$judul', penulis='$penulis', penerbit='$penerbit', tahunTerbit=$tahunTerbit WHERE bukuID=$bukuID";
+
     $result = mysqli_query($koneksi, $query);
-    // jika data gagal diambil maka akan tampil error berikut
-    if(!$result){
-      die ("Query Error: ".mysqli_errno($koneksi).
-         " - ".mysqli_error($koneksi));
+
+    if ($result) {
+        echo "Book details updated successfully.";
+        header("location: data_buku.php");
+    } else {
+        echo "Error updating book details: " . mysqli_error($koneksi);
     }
-    // mengambil data dari database
-    $data = mysqli_fetch_assoc($result);
-      // apabila data tidak ada pada database maka akan dijalankan perintah ini
-       if (!count($data)) {
-          echo "<script>alert('Data tidak ditemukan pada database');window.location='data_buku.php';</script>";
-       }
-  } else {
-    // apabila tidak ada data GET id pada akan di redirect ke index.php
-    echo "<script>alert('Masukkan data id.');window.location='data_buku.php';</script>";
-  }         
-  ?>
+}
+
+// Retrieve book details based on bukuID
+$bukuID = $_GET['bukuID']; // Assuming you pass bukuID as a parameter in the URL
+$query = "SELECT * FROM buku WHERE bukuID = $bukuID";
+$result = mysqli_query($koneksi, $query);
+$row = mysqli_fetch_assoc($result);
+
+// Close the database connection
+mysqli_close($koneksi);
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>CRUD Produk dengan gambar - Gilacoding</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../admin/dasboard.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book Details</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 </head>
 
 <body>
+    <div id="content">
+        <h1 class="text-center fs-5">Tambah Data Buku</h1>
+        <hr class="mt-2">
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="bukuEdit.php">
+                        <input type="hidden" name="bukuID" value="<?php echo $row['bukuID']; ?>">
 
-    <div class="container mt-5">
-        <h1 class="mb-4">Edit Produk Buku</h1>
+                        <div class="mb-3">
+                            <label for="judul" class="form-label">Judul:</label>
+                            <input type="text" name="judul" value="<?php echo $row['judul']; ?>" class="form-control"
+                                required>
+                        </div>
 
-        <form method="POST" action="" enctype="multipart/form-data">
-            <section class="base">
-                <!-- menampung nilai id produk yang akan di edit -->
-                <input name="id" value="<?php echo $data['bukuID']; ?>" hidden />
+                        <div class="mb-3">
+                            <label for="penulis" class="form-label">penulis:</label>
+                            <input type="text" name="penulis" value="<?php echo $row['penulis']; ?>"
+                                class="form-control" required>
+                        </div>
 
-                <div class="mb-3">
-                    <label for="judul" class="form-label">Judul Buku</label>
-                    <input type="text" id="judul" name="judul" class="form-control"
-                        value="<?php echo $data['judul']; ?>" autofocus required />
+                        <div class="mb-3">
+                            <label for="penerbit" class="form-label">Penerbit:</label>
+                            <input type="text" name="penerbit" value="<?php echo $row['penerbit']; ?>"
+                                class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tahunTerbit" class="form-label">Tahun Terbit:</label>
+                            <input type="text" name="tahunTerbit" value="<?php echo $row['tahunTerbit']; ?>"
+                                class="form-control">
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="data_buku.php" class="btn btn-success">Kembali</a>
+                        </div>
+
+                    </form>
                 </div>
-
-                <div class="mb-3">
-                    <label for="penulis" class="form-label">Penulis</label>
-                    <input type="text" id="penulis" name="penulis" class="form-control"
-                        value="<?php echo $data['penulis']; ?>" />
-                </div>
-
-                <div class="mb-3">
-                    <label for="penerbit" class="form-label">Penerbit</label>
-                    <input type="text" id="penerbit" name="penerbit" class="form-control" required
-                        value="<?php echo $data['penerbit']; ?>" />
-                </div>
-
-                <div class="mb-3">
-                    <label for="tahunTerbit" class="form-label">Tahun Terbit</label>
-                    <input type="text" id="tahunTerbit" name="tahunTerbit" class="form-control" required
-                        value="<?php echo $data['tahunTerbit']; ?>" />
-                </div>
-
-                <div class="mb-3">
-                    <label for="gambar_produk" class="form-label">Cover Buku</label>
-                    <img src="img/<?php echo $data['coverBuku']; ?>" style="width: 120px; margin-bottom: 5px;"
-                        class="img-fluid rounded">
-                    <input type="file" id="gambar_produk" name="gambar_produk" class="form-control" />
-                    <small class="text-danger">Abaikan jika tidak merubah gambar produk</small>
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                </div>
-            </section>
-        </form>
+            </div>
+        </div>
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

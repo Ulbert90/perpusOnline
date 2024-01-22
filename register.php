@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "koneksi.php";
+include_once "config.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($koneksi, $_POST["username"]);
@@ -53,6 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Register perpus</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+body {
+    background-image: url('https://img.freepik.com/free-photo/grunge-paint-background_1409-1337.jpg?w=900&t=st=1705821551~exp=1705822151~hmac=6cc7c39cbf241a3fc3bd2d2f8bd7d679db810c24965feb601d28f199c8bec9a8');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
 
 <body>
 
@@ -89,7 +103,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="alamat" class="form-control" id="alamat" name="alamat" required>
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary grid">Daftar</button>
+                            <div class="d-grid">
+                                <button type="submit" name="submit" class="btn btn-primary">Daftar</button>
+                            </div>
+                            <p class="mt-3">SUdah Punya Akun?<a href="index.php"> Ayo Login</a></p>
                         </form>
                     </div>
                 </div>

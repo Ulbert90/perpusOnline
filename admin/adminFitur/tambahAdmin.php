@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once "../koneksi.php";
+include_once "../../config.php";
+include_once "../../navigation/sidebar.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = mysqli_real_escape_string($koneksi, $_POST["username"]);
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error: " . mysqli_error($koneksi));
     }
 
-    header("location: ../user/member.php");
+    header("location: ../dasboard.php");
     echo "<script>DB Berhasil ditambahkan</script>";
     exit();
 }
@@ -55,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">

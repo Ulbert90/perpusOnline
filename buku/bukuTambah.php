@@ -7,16 +7,14 @@
     <title>Admin | perpus</title>
     <script src="https://kit.fontawesome.com/13c062a83b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <script src="../src/js/script.js"></script>
-    <link rel="stylesheet" href="../admin/dasboard.css">
 </head>
 
 <body>
 
     <?php
-    include_once '../modal/sidebarBuku.php'
+    include_once '../navigation/sidebar.php'
         ?>
-    <div class="content">
+    <div id="content">
         <!-- main konten-->
         <h1 class="text-center fs-5">Tambah Data Buku</h1>
         <hr class="mt-2">
@@ -38,7 +36,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="tahunTerbit" class="form-label">Tahun Terbit</label>
-                            <input type="date" class="form-control" id="tahunTerbit" name="tahunTerbit" placeholder="">
+                            <input type="number" class="form-control" id="tahunTerbit" name="tahunTerbit" placeholder=""
+                                min="1000" max="9999">
                         </div>
                         <div class="mb-3">
                             <label for="coverBuku" class="form-label">Cover Buku</label>
@@ -47,7 +46,7 @@
                             <img id="preview" src="#" alt="Preview"
                                 style="max-width: 100%; max-height: 100px; margin-top: 10px; display: none; border: solid #000;">
                         </div>
-                        <button type="submit" class="btn btn-outline-primary">Input</button>
+                        <button type="submit" class="btn btn-outline-success">Input</button>
                     </form>
 
                 </div>
