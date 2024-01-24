@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-
 </head>
 
 <body>
@@ -27,8 +26,6 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Kategori Buku</a></li>
                             <li><a class="dropdown-item" href="koleksi/koleksi.php">Koleksimu</a></li>
-                            <li>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -49,15 +46,28 @@
                 <a class="navbar-brand mx-auto text-center fs-2 fw-bold" href="/APD/peminjam/index.php">SMK PALAPA
                     SEMARANG</a>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Cari buku..." aria-label="Search">
+                    <input class="form-control me-2" type="search" id="searchInput" placeholder="Cari buku..."
+                        aria-label="Search">
                 </form>
             </div>
         </div>
     </nav>
 
-    <script src="../assets/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Menambahkan event listener untuk merespons perubahan nilai pada input pencarian
+    document.getElementById('searchInput').addEventListener('input', function() {
+        // Ambil nilai input pencarian
+        var searchTerm = this.value.trim().toLowerCase();
+
+        // Lakukan sesuatu dengan nilai pencarian, misalnya filter daftar buku
+        // ...
+
+        // Contoh: Tampilkan nilai pencarian di console
+        console.log(searchTerm);
+    });
+    </script>
 </body>
 
 </html>

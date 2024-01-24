@@ -21,7 +21,7 @@
         <div class="container mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="bukuTambah_act.php" enctype="multipart/form-data">
+                    <form method="post" action="prosesTambah.php" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="judul" class="form-label">Judul Buku</label>
                             <input type="text" class="form-control" id="judul" name="judul" placeholder="">
